@@ -1,3 +1,5 @@
+# Changelog
+
 ## 1.1.0
 
 - Cursor Agent CLI (`agent`) marketplace packaging via `.cursor-plugin/`
@@ -7,4 +9,4 @@
 
 ## 1.0.0
 
-- Initial version of the Codex plugin for Claude Code
+- Initial version of the Codex plugin for Claude Code (upstream)

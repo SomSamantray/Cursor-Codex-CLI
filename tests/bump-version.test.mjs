@@ -51,6 +51,21 @@ function makeVersionFixture() {
       }
     ]
   });
+  writeJson(path.join(root, ".cursor-plugin", "marketplace.json"), {
+    metadata: {
+      version: "1.0.2"
+    },
+    plugins: [
+      {
+        name: "codex",
+        version: "1.0.2"
+      }
+    ]
+  });
+  writeJson(path.join(root, ".cursor-plugin", "plugin.json"), {
+    name: "codex",
+    version: "1.0.2"
+  });
 
   return root;
 }
@@ -69,6 +84,8 @@ test("bump-version updates every release manifest", () => {
   assert.equal(readJson(path.join(root, "plugins", "codex", ".claude-plugin", "plugin.json")).version, "1.2.3");
   assert.equal(readJson(path.join(root, ".claude-plugin", "marketplace.json")).metadata.version, "1.2.3");
   assert.equal(readJson(path.join(root, ".claude-plugin", "marketplace.json")).plugins[0].version, "1.2.3");
+  assert.equal(readJson(path.join(root, ".cursor-plugin", "plugin.json")).version, "1.2.3");
+  assert.equal(readJson(path.join(root, ".cursor-plugin", "marketplace.json")).metadata.version, "1.2.3");
 });
 
 test("bump-version check mode reports stale metadata", () => {

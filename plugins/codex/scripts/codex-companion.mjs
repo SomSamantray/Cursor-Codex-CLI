@@ -21,7 +21,7 @@ import {
     runAppServerReview,
     runAppServerTurn
   } from "./lib/codex.mjs";
-import { resolveClaudeSessionPath } from "./lib/claude-session-transfer.mjs";
+import { resolveHostSessionPath } from "./lib/session-transfer.mjs";
 import { readStdinIfPiped } from "./lib/fs.mjs";
 import { collectReviewContext, ensureGitRepository, resolveReviewTarget } from "./lib/git.mjs";
 import { binaryAvailable, terminateProcessTree } from "./lib/process.mjs";
@@ -623,7 +623,7 @@ function renderTransferResult(payload) {
 }
 
 async function executeTransfer(cwd, options = {}) {
-  const sourcePath = resolveClaudeSessionPath(cwd, {
+  const sourcePath = resolveHostSessionPath(cwd, {
     source: options.source
   });
   const result = await importExternalAgentSession(cwd, { sourcePath });

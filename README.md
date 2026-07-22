@@ -1,9 +1,8 @@
-# Codex plugin for Claude Code
+# Codex plugin for Cursor Agent CLI
 
-Use Codex from inside Claude Code for code reviews or to delegate tasks to Codex.
+Use Codex from inside **Cursor Agent CLI** (`agent` / `cursor-agent`) for code reviews or to delegate tasks to Codex.
 
-This plugin is for Claude Code users who want an easy way to start using Codex from the workflow
-they already have.
+This repository is a maintained fork of [openai/codex-plugin-cc](https://github.com/openai/codex-plugin-cc) with Cursor marketplace packaging and host-aware session paths. CommandCode support is planned for v1.1 — see `adapters/commandcode/README.md`.
 
 <video src="./docs/plugin-demo.webm" controls muted playsinline autoplay></video>
 
@@ -15,33 +14,34 @@ they already have.
 
 ## Requirements
 
-- **ChatGPT subscription (incl. Free) or OpenAI API key.**
+- **Cursor Agent CLI** (`agent` or `cursor-agent`)
+- **ChatGPT subscription (incl. Free) or OpenAI API key**
   - Usage will contribute to your Codex usage limits. [Learn more](https://developers.openai.com/codex/pricing).
 - **Node.js 18.18 or later**
 
 ## Install
 
-Add the marketplace in Claude Code:
+Add the marketplace in Cursor Agent CLI:
 
 ```bash
-/plugin marketplace add openai/codex-plugin-cc
+agent plugin marketplace add SomSamantray/codex-plugin-cursor
 ```
 
 Install the plugin:
 
 ```bash
-/plugin install codex@openai-codex
+agent plugin install codex@somsamantray-codex
 ```
 
-Reload plugins:
+Reload plugins (in an interactive `agent` session):
 
-```bash
+```text
 /reload-plugins
 ```
 
 Then run:
 
-```bash
+```text
 /codex:setup
 ```
 
@@ -56,7 +56,7 @@ npm install -g @openai/codex
 If Codex is installed but not logged in yet, run:
 
 ```bash
-!codex login
+codex login
 ```
 
 After install, you should see:
@@ -66,11 +66,15 @@ After install, you should see:
 
 One simple first run is:
 
-```bash
+```text
 /codex:review --background
 /codex:status
 /codex:result
 ```
+
+## Upstream
+
+This fork tracks OpenAI's official plugin. See [docs/UPSTREAM-MERGES.md](docs/UPSTREAM-MERGES.md) for merge workflow.
 
 ## Usage
 

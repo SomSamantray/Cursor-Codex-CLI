@@ -13,12 +13,12 @@ import {
   sendBrokerShutdown,
   teardownBrokerSession
 } from "./lib/broker-lifecycle.mjs";
+import { resolveHookEnvFile, resolvePluginDataEnvName } from "./lib/host.mjs";
 import { loadState, resolveStateFile, saveState } from "./lib/state.mjs";
-import { TRANSCRIPT_PATH_ENV } from "./lib/claude-session-transfer.mjs";
+import { TRANSCRIPT_PATH_ENV } from "./lib/session-transfer.mjs";
 import { resolveWorkspaceRoot } from "./lib/workspace.mjs";
 
 export const SESSION_ID_ENV = "CODEX_COMPANION_SESSION_ID";
-const PLUGIN_DATA_ENV = "CLAUDE_PLUGIN_DATA";
 
 function readHookInput() {
   const raw = fs.readFileSync(0, "utf8").trim();
@@ -33,10 +33,11 @@ function shellEscape(value) {
 }
 
 function appendEnvVar(name, value) {
-  if (!process.env.CLAUDE_ENV_FILE || value == null || value === "") {
+  const envFile = resolveHookEnvFile();
+  if (!envFile || value == null || value === "") {
     return;
   }
-  fs.appendFileSync(process.env.CLAUDE_ENV_FILE, `export ${name}=${shellEscape(value)}\n`, "utf8");
+  fs.appendFileSync(envFile, `export ${name}=${shellEscape(value)}\n`, "utf8");
 }
 
 function cleanupSessionJobs(cwd, sessionId) {
@@ -77,7 +78,7 @@ function cleanupSessionJobs(cwd, sessionId) {
 function handleSessionStart(input) {
   appendEnvVar(SESSION_ID_ENV, input.session_id);
   appendEnvVar(TRANSCRIPT_PATH_ENV, input.transcript_path);
-  appendEnvVar(PLUGIN_DATA_ENV, process.env[PLUGIN_DATA_ENV]);
+  appendEnvVar(resolvePluginDataEnvName(), process.env[resolvePluginDataEnvName()]);
 }
 
 async function handleSessionEnd(input) {

@@ -1,0 +1,20 @@
+{
+  "name": "codex",
+  "displayName": "Codex for Cursor",
+  "version": "1.1.0",
+  "description": "Use Codex from Cursor Agent CLI to review code or delegate tasks.",
+  "author": {
+    "name": "SomSamantray",
+    "url": "https://github.com/SomSamantray"
+  },
+  "homepage": "https://github.com/SomSamantray/codex-plugin-cursor",
+  "repository": "https://github.com/SomSamantray/codex-plugin-cursor",
+  "license": "Apache-2.0",
+  "keywords": [
+    "cursor",
+    "codex",
+    "code-review",
+    "delegation",
+    "openai"
+  ]
+}
