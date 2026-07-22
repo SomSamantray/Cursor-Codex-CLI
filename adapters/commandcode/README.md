@@ -5,7 +5,7 @@ CommandCode support is planned for **v1.1**. This directory will contain skill a
 ## Planned install (v1.1)
 
 ```bash
-commandcode skills add SomSamantray/codex-plugin-cursor --path adapters/commandcode/skills/codex-review
+commandcode skills add SomSamantray/Cursor-Codex-CLI --path adapters/commandcode/skills/codex-review
 ```
 
 ## v1 status
@@ -13,6 +13,6 @@ commandcode skills add SomSamantray/codex-plugin-cursor --path adapters/commandc
 Use the **Cursor Agent CLI** plugin for now:
 
 ```bash
-agent plugin marketplace add SomSamantray/codex-plugin-cursor
+agent plugin marketplace add SomSamantray/Cursor-Codex-CLI
 agent plugin install codex@somsamantray-codex
 ```

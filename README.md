@@ -24,7 +24,7 @@ This repository is a maintained fork of [openai/codex-plugin-cc](https://github.
 Add the marketplace in Cursor Agent CLI:
 
 ```bash
-agent plugin marketplace add SomSamantray/codex-plugin-cursor
+agent plugin marketplace add SomSamantray/Cursor-Codex-CLI
 ```
 
 Install the plugin:
